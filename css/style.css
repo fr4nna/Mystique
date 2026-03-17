@@ -1,0 +1,33 @@
+ @import url("https://use.typekit.net/eqf8gek.css");
+ @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+ body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 403px;
+    height: 874px;
+    background-color: var(--light-purple);
+    border: 5 px solid black;
+ }
+
+ :root {
+    --gold: #FDE2B6;
+    --dark-purple: #342043;
+   --light-purple: #BC9595;
+    
+ }
+
+ h1 {
+    text-align: center;
+    color: var(--dark-purple);
+    font-family: "quiche-flare", sans-serif;
+   font-weight: 600;
+   font-size: 3rem;
+ }
+
+ .borderdesign {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
