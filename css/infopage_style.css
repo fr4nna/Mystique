@@ -3,6 +3,28 @@
  @import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
 
 
+ :root {
+    /* --background-color: linear-gradient(180deg, #f3b5c8 10%, #f8aac8 20%, #2a0c5a 100%), #160531; */
+    --background-color: linear-gradient(180deg, #BC9595 0%, #885979 50%, #211337 100%), #0A1326;
+    --gold: #FDE2B6;
+    --dark-purple: #342043;
+    --light-purple: #BC9595;
+    --light-pink: #F9C5D1;
+    --light-yellow: #E6CC68;
+
+    --glow: 0 0 7.4px rgba(165, 116, 249, 0.80);
+    --glow-stroke: 0.94px;
+
+
+
+    --heading-font: "quiche-flare", sans-serif;
+    --sub-heading: "Faculty Glyphic", sans-serif;
+    --body-text: "DM Sans", sans-serif;
+
+    --description-to-sm-gap: 3rem;
+
+ }
+
  * {
     margin: 0;
     padding: 0;
@@ -21,16 +43,6 @@
 
  }
 
- :root {
-    --background-color: linear-gradient(180deg, #BC9595 0%, #885979 50%, #211337 100%);
-    --gold: #FDE2B6;
-    --dark-purple: #342043;
-    --light-purple: #BC9595;
-    --heading-font: "quiche-flare", sans-serif;
-    --sub-heading: "Faculty Glyphic", sans-serif;
-
- }
-
  /* ---------------------------- H1,H2,H3 STYLING ---------------------------- */
 
  h1 {
@@ -42,20 +54,26 @@
     font-size: 3rem;
 
  }
- 
+
+ p {
+    font-size: 1rem;
+    font-family: var(--body-text);
+    color: white;
+ }
+
  /* ------------------------------ STYLING HERE ------------------------------ */
 
  main {
+    position: relative;
+
     background: var(--background-color);
 
     width: 100%;
     height: 100%;
 
-    position: relative;
-
 
     overflow-x: hidden;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
  }
 
  .borderdesign {
@@ -70,6 +88,7 @@
     align-items: center;
 
     padding: 3rem 1rem;
+
     /* padding: inherit; */
  }
 
@@ -83,18 +102,25 @@
     gap: 3rem;
 
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 
     padding: 5rem 0 0 0;
 
 
-    border: 1px solid blue;
+    z-index: 10;
+
+    /* border: 1px solid blue; */
 
     h1 {
        text-align: center;
        width: 100%;
        color: var(--dark-purple);
+
+       text-shadow: var(--light-yellow);
+       -webkit-text-stroke-width: var(--glow-stroke);
+
     }
+
 
  }
 
@@ -103,14 +129,152 @@
     height: auto;
  }
 
+ .long-description {
+    position: inherit;
+
+    padding: 0 1rem !important;
+ }
+
  /* ------------------------------- TAB CONTENT ------------------------------ */
 
-   .tablinks {
-      background: none;
-      border: none;
-      font-family: var(--sub-heading);
-      font-size: 2rem;
-      padding: 1.25rem 1rem;
-      color: var();
-   }
+ .tablinks {
+    display: inline-block;
 
+    background: none;
+    border: none;
+    font-family: var(--sub-heading);
+    font-size: 1.25rem;
+    padding: 0 1rem;
+
+    cursor: pointer;
+
+    z-index: 9;
+ }
+
+ .tablinks.active {
+    transform: scale(1.5);
+    color: var(--light-yellow);
+ }
+
+
+ .tabcontent {
+    display: block;
+    width: 90%;
+    height: fit-content;
+
+    background-color: rgb(55, 35, 69, 0.5);
+    background-image: url(../img/Tab-decor.svg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-blend-mode: soft-light;
+
+    border-radius: 1em;
+
+    padding: 1rem;
+    border: 1px solid var(--light-yellow);
+
+    div {
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       justify-content: space-evenly;
+       text-align: center;
+
+       ul {
+          list-style: none;
+          font-family: var(--body-text) !important;
+          color: white;
+          font-size: 1.25rem;
+       }
+    }
+ }
+
+ .tabcontent::before {
+    content: "";
+    background: url(../img/Tab-decor-2.svg);
+    width: 80%;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+
+    position: absolute;
+    top: auto;
+
+    transform: translateY(-1.6rem);
+
+    margin: 0 auto;
+ }
+
+ /* ---------------------------------- DECOR --------------------------------- */
+
+ .sm-container {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+
+    --moon-sun-base-size: 28rem;
+    --moon-sun-size: calc(var(--moon-sun-base-size) * 0.7);
+    width: var(--moon-sun-size);
+    height: calc(var(--moon-sun-size) / 1.75);
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    margin-top: var(--description-to-sm-gap);
+
+ }
+
+ .moon-sun {
+    position: absolute;
+    left: 0;
+    bottom: calc(var(--moon-sun-size) / -2);
+
+    width: var(--moon-sun-size);
+    height: var(--moon-sun-size);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+ }
+
+ .moon-sun img {
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    transform-origin: center center;
+
+ }
+
+ #sun-svg {
+    z-index: 3;
+
+ }
+
+ #moon-svg {
+    z-index: 2;
+    animation: spin 70s linear infinite;
+    opacity: 0.5;
+ }
+
+
+ @keyframes spin {
+    from {
+       transform: rotate(0deg);
+    }
+
+    to {
+       transform: rotate(360deg);
+    }
+ }
